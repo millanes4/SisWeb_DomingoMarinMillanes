@@ -3,18 +3,18 @@
 {% block content %}
 
 <h1>
-    Restaurants
+    Horts
     {% if user %}
         (<a href="{% url 'myhorts:hort_create' %}">add</a>)
     {% endif %}
 </h1>
 
-<ul>
+<!--<ul>
     {% for hort in latest_hort_list %}
         <li><a href="{% url 'myhorts:hort_detail' hort.id %}">{{ hort.nom }}</a></li>
     {% empty %}
         <li>Sorry, no horts registered yet.</li>
     {% endfor %}
-</ul>
+</ul>-->
 
 {% endblock %}

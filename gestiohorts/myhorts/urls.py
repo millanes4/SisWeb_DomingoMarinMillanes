@@ -2,7 +2,7 @@ from django.conf.urls import patterns, url
 from django.utils import timezone
 from django.views.generic import DetailView, ListView, UpdateView
 
-from models import Propietari, Hort
+from models import Propietari, Hort, Arbre
 from forms import HortForm, ArbreForm
 from views import HortCreate, ArbreCreate, HortDetail
 

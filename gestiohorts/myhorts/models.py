@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from datetime import date
 
+
 class Hort(models.Model):
     nom = models.TextField(default="")
     provincia = models.TextField(default="", null=False)
@@ -11,9 +12,11 @@ class Hort(models.Model):
     poligon = models.IntegerField(null=False)
     parcela = models.IntegerField(null=False)
     recinte = models.IntegerField(null=False)
+    date = models.DateField(default=date.today)
 
     def __unicode__(self):
         return u"%s" % self.name
+
     def get_absolute_url(self):
         return reverse('myhorts:hort_detail', kwargs={'pk': self.pk})
 
@@ -27,20 +30,22 @@ class Propietari(models.Model):
 
     def __unicode__(self):
         return u"%s" % self.name
+
     def get_absolute_url(self):
         return reverse('myhorts:propietari_detail', kwargs={'pkr': self.hort.pk, 'pk': self.pk})
 
+
 class Arbre(models.Model):
-    tipus= models.TextField(null=False)
+    tipus = models.TextField(null=False)
     varietat = models.TextField(blank=True, null=False)
     data_recolecta = models.DateField(null=False)
-    data_planta = models.DateField(null= False)
-    class Meta:
-        abstract = True
+    data_planta = models.DateField(null=False)
+
+
 
 class Arbre_Hort(models.Model):
-    idhort= models.ForeignKey(Hort, null=False)
-    idarbre= models.ForeignKey(Arbre, null= False)
-    cantitat= models.IntegerField(null=False)
+    idhort = models.ForeignKey(Hort, null=False)
+    idarbre = models.ForeignKey(Arbre, null=False)
+    cantitat = models.IntegerField(null=False)
 
 

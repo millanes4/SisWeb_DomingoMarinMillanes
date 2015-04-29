@@ -15,7 +15,7 @@ class Hort(models.Model):
     date = models.DateField(default=date.today)
 
     def __unicode__(self):
-        return u"%s" % self.name
+        return u"%s" % self.nom
 
     def get_absolute_url(self):
         return reverse('myhorts:hort_detail', kwargs={'pk': self.pk})
@@ -29,7 +29,7 @@ class Propietari(models.Model):
     email = models.EmailField(null=False)
 
     def __unicode__(self):
-        return u"%s" % self.name
+        return u"%s" % self.nom
 
     def get_absolute_url(self):
         return reverse('myhorts:propietari_detail', kwargs={'pkr': self.hort.pk, 'pk': self.pk})
@@ -40,12 +40,13 @@ class Arbre(models.Model):
     varietat = models.TextField(blank=True, null=False)
     data_recolecta = models.DateField(null=False)
     data_planta = models.DateField(null=False)
-
+    
+    def __unicode__(self):
+        return u"%s" % self.tipus
 
 
 class Arbre_Hort(models.Model):
     idhort = models.ForeignKey(Hort, null=False)
     idarbre = models.ForeignKey(Arbre, null=False)
     cantitat = models.IntegerField(null=False)
-
 

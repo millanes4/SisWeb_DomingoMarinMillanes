@@ -11,6 +11,7 @@ from django.views.generic.edit import CreateView
 from models import Arbre, Propietari, Hort
 from forms import HortForm, ArbreForm
 
+
 class HortDetail(DetailView):
     model = Hort
     template_name = 'myhorts/hort_detail.html'

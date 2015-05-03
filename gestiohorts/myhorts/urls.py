@@ -4,7 +4,7 @@ from django.views.generic import DetailView, ListView, UpdateView
 
 from models import Propietari, Hort, Arbre
 from forms import HortForm, ArbreForm
-from views import HortCreate, ArbreCreate, HortDetail
+from views import HortCreate, ArbreCreate, HortDetail, HortList
 
 urlpatterns = patterns('',
     # List latest 5 horts: /myhorts/

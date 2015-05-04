@@ -9,18 +9,25 @@ from views import HortCreate, ArbreCreate, HortDetail, HortList
 urlpatterns = patterns('',
     # List latest 5 horts: /myhorts/
     url(r'^$',
-        ListView.as_view(
-            queryset=Hort.objects.filter(date__lte=timezone.now()).order_by('date')[:5],
-            context_object_name='latest_hort_list',
-            template_name='myhorts/hort_list.html'),
+        HortList.as_view(),
         name='hort_list'),
+        
+    # List horts: /myhorts/horts.json
+    url(r'^horts\.(?P<extension>(json|xml))$',
+        HortList.as_view().
+        name='hort_detail'),
 
     # Hort details, ex.: /myhorts/horts/1/
     url(r'^horts/(?P<pk>\d+)/$',
         HortDetail.as_view(),
         name='hort_detail'),
 
-    # Create a hort: /myhorts/horts/create/
+    # hort details, ex.: /myhorts/horts/1.json
+    url(r'^horts/(?P<pk>\d+)\.(?P<extension>(json|xml))$',
+        HortDetail.as_view(),
+        name='hort_detail_conneg'),
+        
+    # Create a Hort: /myhorts/horts/create/
     url(r'^horts/create/$',
         HortCreate.as_view(),
         name='hort_create'),
@@ -28,10 +35,10 @@ urlpatterns = patterns('',
     # Edit hort details, ex: /myhorts/horts/1/edit/
     url(r'^horts/(?P<pk>\d+)/edit/$',
         UpdateView.as_view(
-            model=Hort,
+            model=Restaurant,
             form_class=HortForm,
             template_name='myhorts/form.html'),
-        name='hort_edit'),
+    name='hort_edit'),
 
     # Hort arbre details, ex: /myhorts/horts/1/arbres/1/
     url(r'^horts/(?P<pkr>\d+)/arbres/(?P<pk>\d+)/$',
@@ -40,12 +47,12 @@ urlpatterns = patterns('',
             template_name='myhorts/arbre_detail.html'),
         name='arbre_detail'),
 
-    # Create a hort arbre, ex: /myhorts/horts/1/arbres/create/
+    # Create a restaurant dish, ex: /myhorts/horts/1/arbres/create/
     url(r'^horts/(?P<pk>\d+)/arbres/create/$',
         ArbreCreate.as_view(),
         name='arbre_create'),
-
-    # Edit hort arbre details, ex: /myhorts/horts/1/arbres/1/edit/
+        
+    # Edit restaurant dish details, ex: /myhorts/horts/1/arbres/1/edit/
     url(r'^horts/(?P<pkr>\d+)/arbres/(?P<pk>\d+)/edit/$',
         UpdateView.as_view(
             model=Arbre,

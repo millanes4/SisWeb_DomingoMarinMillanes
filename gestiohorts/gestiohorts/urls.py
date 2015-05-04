@@ -7,12 +7,12 @@ admin.autodiscover()
 #from myhorts.views import *
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'gestiohorts.views.home', name='home'),
+    url(r'^$', 'myhorts.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
     url(r'^myhorts/', include('myhorts.urls', namespace='myhorts')),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),
+    url(r'^accounts/profile/$', include('myhorts.urls', namespace='myhorts')),
 
 
     # Uncomment the admin/doc line below to enable admin documentation:

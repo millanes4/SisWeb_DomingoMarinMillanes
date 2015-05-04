@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>{{titlehead}} </title>
+	</head>
+	<body>
+		<h1>{{pagetitle}}</h1>
+
+	
+		{%if user.username%}
+	<p>	
+
+		Bienvenido {{user.username}}!
+		aquí podra gestionar sus huertos y arboles
+	</p>
+	{%else%}
+	<p> Para entrar inicie sesion:
+		 <a href="accounts/login/">sign in</a>
+	</p>
+	{%endif%}
+</body>
+</html>

@@ -15,7 +15,11 @@ from django.views.generic.edit import CreateView
 
 from models import Arbre, Propietari, Hort
 from forms import HortForm, ArbreForm
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 
+def home(request):
+    return render_to_response('myhorts/mainpage.html', context_instance=RequestContext(request))
 
 class ConnegResponseMixin(TemplateResponseMixin):
     def render_json_object_response(self, objects, **kwargs):
@@ -83,3 +87,7 @@ def submit(request):
         print request.POST['hort']
 
     return render(request, 'index.html', {})
+
+
+	#output = template.render(variables)
+	#return HttpResponse(output)

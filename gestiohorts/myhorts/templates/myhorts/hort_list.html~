@@ -1,20 +1,20 @@
-{% extends "myrestaurants/base.html" %}
+{% extends "myhorts/base.html" %}
 
 {% block content %}
 
 <h1>
-    Restaurants
+    Horts
     {% if user %}
-        (<a href="{% url 'myrestaurants:restaurant_create' %}">add</a>)
+        (<a href="{% url 'myhorts:hort_create' %}">add</a>)
     {% endif %}
 </h1>
 
-<ul>
-    {% for restaurant in latest_restaurant_list %}
-        <li><a href="{% url 'myrestaurants:restaurant_detail' restaurant.id %}">{{ restaurant.name }}</a></li>
+<!--<ul>
+    {% for hort in latest_hort_list %}
+        <li><a href="{% url 'myhorts:hort_detail' hort.id %}">{{ hort.nom }}</a></li>
     {% empty %}
-        <li>Sorry, no restaurants registered yet.</li>
+        <li>Sorry, no horts registered yet.</li>
     {% endfor %}
-</ul>
+</ul>-->
 
 {% endblock %}

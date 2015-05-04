@@ -79,7 +79,7 @@ class ArbreCreate(CreateView):
         form.instance.user = self.request.user
         form.instance.hort = Hort.objects.get(id=self.kwargs['pk'])
         return super(ArbreCreate, self).form_valid(form)
-
+        
 def submit(request):
     # global alphabet_array
 

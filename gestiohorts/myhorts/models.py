@@ -38,8 +38,8 @@ class Propietari(models.Model):
 class Arbre(models.Model):
     tipus = models.TextField(null=False)
     varietat = models.TextField(blank=True, null=False)
-    data_recolecta = models.DateField(null=False)
-    data_planta = models.DateField(null=False)
+    data_recolecta = models.DateField(default=date.today,null=False)
+    data_planta = models.DateField(default=date.today,null=False)
     
     def __unicode__(self):
         return u"%s" % self.tipus

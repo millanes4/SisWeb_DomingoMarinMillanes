@@ -14,70 +14,29 @@
 
 <h2>Ubicacio:</h2>
 <p>
-    {{ hort.provincia }}, {{ hort.municipi }} <br/>
-    {{ hort.poligon }} {{ hort.parcela }} <br/>
-    ({{ hort.recinte }})
+    Provincia:  {{ hort.provincia }}  <br/>
+    Municipi: {{ hort.municipi }} <br/>
+    Poligon: {{ hort.poligon }} <br/>
+    Parcela:{{ hort.parcela }} <br/>
+    Recinte: {{ hort.recinte }} 
 </p>
 
 <h2>
-    Dishes
+    Arbres
     {% if user %}
-        (<a href="{% url 'myrestaurants:dish_create' restaurant.id %}">add</a>)
+        (<a href="{% url 'myhorts:arbre_create' hort.id %}">add</a>)
     {% endif %}
 </h2>
 <ul>
-    {% for dish in restaurant.dishes.all %}
-        <li><a href="{% url 'myrestaurants:dish_detail' restaurant.id dish.id %}">{{ dish.name }}</a></li>
+    {% for arbre in hort.arbre.all %}
+        <li><a href="{% url 'myhorts:arbre_detail' hort.id arbre.id %}">{{ arbre.name }}</a></li>
     {% empty %}
-        <li>Sorry, no dishes for this restaurant yet.</li>
+        <li>Sorry, no arbre for this hort yet.</li>
     {% endfor %}
 </ul>
-
-<h2>Reviews</h2>
-{% if restaurant.restaurantreview_set.all|length > 0 %}
-<span rel="aggregateRating">
-    <p typeof="AggregateRating">
-        Average rating <span property="ratingValue">{{ restaurant.averageRating|stringformat:".1f" }}</span>
-        {% with restaurant.restaurantreview_set.all|length as reviewCount %}
-        from <span property="reviewCount">{{ reviewCount }}</span> review{{ reviewCount|pluralize }}
-        {% endwith %}
-    </p>
-</span>
-<ul rel="review">
-    {% for review in restaurant.restaurantreview_set.all %}
-        <li typeof="Review">
-            <p rel="reviewRating" typeof="Rating">
-                <span property="worstRating" content="{{ RATING_CHOICES.0.0 }}"></span>
-                <span property="ratingValue">{{ review.rating }}</span> star{{ review.rating|pluralize }}
-                {% with RATING_CHOICES|last as best %}
-                <span property="bestRating" content="{{ best.0 }}"></span>
-                {% endwith %}
-            </p>
-            <p property="description">{{ review.comment }}</p>
-            <p>Created by <span property="author">{{ review.user }}</span> on
-                <span property="publishDate">{{ review.date}}</span></p>
-        </li>
-    {% endfor %}
-</ul>
-</span>
-{% endif %}
-
-<h3>Add Review</h3>
-<form action="{% url 'myrestaurants:review_create' restaurant.id %}" method="post">
-    {% csrf_token %}
-    Message: <textarea name="comment" id="comment" rows="4"></textarea>
-    <p>Rating:</p>
-    <p>
-    {% for rate in RATING_CHOICES %}
-        <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.1 }}" />
-        <label for="choice{{ forloop.counter }}">{{ rate.1 }} star{{ rate.0|pluralize }}</label><br />
-    {% endfor %}
-    </p>
-    <input type="submit" value="Review" />
-</form>
 
 {% endblock %}
 
 {% block footer %}
-    Created by {{ restaurant.user }} on {{ restaurant.date }}
+    Created by {{ propietari.user }}
 {% endblock %}

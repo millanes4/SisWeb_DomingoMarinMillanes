@@ -4,11 +4,11 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-#from myhorts.views import *
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', 'myhorts.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
+    
+    url(r'^$', 'myhorts.views.home', name='home'),
     url(r'^myhorts/', include('myhorts.urls', namespace='myhorts')),
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     url(r'^accounts/logout/$', 'django.contrib.auth.views.logout'),

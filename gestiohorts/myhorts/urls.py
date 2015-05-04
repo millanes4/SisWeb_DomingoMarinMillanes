@@ -14,7 +14,7 @@ urlpatterns = patterns('',
         
     # List horts: /myhorts/horts.json
     url(r'^horts\.(?P<extension>(json|xml))$',
-        HortList.as_view().
+        HortList.as_view(),
         name='hort_detail'),
 
     # Hort details, ex.: /myhorts/horts/1/
@@ -35,7 +35,7 @@ urlpatterns = patterns('',
     # Edit hort details, ex: /myhorts/horts/1/edit/
     url(r'^horts/(?P<pk>\d+)/edit/$',
         UpdateView.as_view(
-            model=Restaurant,
+            model=Hort,
             form_class=HortForm,
             template_name='myhorts/form.html'),
     name='hort_edit'),

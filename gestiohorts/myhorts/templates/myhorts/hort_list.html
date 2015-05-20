@@ -11,6 +11,9 @@
 <ul>
     {% for hort in latest_hort_list %}
         <li><a href="{% url 'myhorts:hort_detail' hort.id %}">{{ hort.nom }}</a></li>
+        <form action="{% url 'myhorts:hort_detail' hort.id %}edit">
+		    <br><p><input type="submit" value="Editar Hort" /></p>
+		</form>
     {% empty %}
         <li>Sorry, no horts registered yet.</li>
     {% endfor %}

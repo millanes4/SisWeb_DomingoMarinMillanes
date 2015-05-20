@@ -13,7 +13,7 @@ from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import CreateView
 
-from models import Arbre, Propietari, Hort
+from models import Arbre, Propietari, Hort, Arbre_Hort
 from forms import HortForm, ArbreForm
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -88,6 +88,11 @@ def submit(request):
 
     return render(request, 'index.html', {})
 
+class ArbreList(ListView, ConnegResponseMixin):
+    model = Arbre_Hort
+    queryset = Arbre_Hort.select(date__lte=timezone.now()).order_by('date')[:5]
+    context_object_name = 'latest_hort_list'
+    template_name = 'myhorts/hort_list.html'
 
 	#output = template.render(variables)
 	#return HttpResponse(output)

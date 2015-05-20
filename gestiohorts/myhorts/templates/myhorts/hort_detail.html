@@ -28,8 +28,8 @@
     {% endif %}
 </h2>
 <ul>
-    {% for arbre in hort.arbre.all %}
-        <li><a href="{% url 'myhorts:arbre_detail' hort.id arbre.id %}">{{ arbre.name }}</a></li>
+    {% for arbre in hort.arbre_hort.all %}
+        <li><a href="{% url 'myhorts:arbre_list' hort.id arbre.id %}">{{ arbre.name }}</a></li>
     {% empty %}
         <li>Sorry, no arbre for this hort yet.</li>
     {% endfor %}

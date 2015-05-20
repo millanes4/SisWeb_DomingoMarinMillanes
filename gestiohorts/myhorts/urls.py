@@ -59,4 +59,5 @@ urlpatterns = patterns('',
             form_class=ArbreForm,
             template_name='myhorts/form.html'),
         name='arbre_edit'),
+
 )

@@ -1,0 +1,15 @@
+{% extends "myhorts/base.html" %}
+
+{% block content %}
+
+
+<ul>
+    {% for hort in latest_hort_list %}
+        <li><a href="{% url 'myhorts:arbre_detail' arbre.id %}">{{ arbre.nom }}</a></li>
+        <form action="{% url 'myhorts:arbre_detail' arbre.id %}edit">
+		    <br><p><input type="submit" value="Editar Hort" /></p>
+		</form>
+    {% endfor %}
+</ul>
+
+{% endblock %}

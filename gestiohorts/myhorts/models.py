@@ -36,6 +36,7 @@ class Propietari(models.Model):
 
 
 class Arbre(models.Model):
+    hort = models.ForeignKey(Hort,null=True,related_name='arbre')
     tipus = models.TextField(null=False)
     varietat = models.TextField(blank=True, null=False)
     data_recolecta = models.DateField(default=date.today,null=False)
@@ -44,9 +45,5 @@ class Arbre(models.Model):
     def __unicode__(self):
         return u"%s" % self.tipus
 
-
-class Arbre_Hort(models.Model):
-    idhort = models.ForeignKey(Hort, null=False)
-    idarbre = models.ForeignKey(Arbre, null=False)
-    cantitat = models.IntegerField(null=False)
-
+    def get_absolute_url(self):
+        return reverse('myhorts:arbre_list', kwargs={'pkr': self.hort.pk, 'pk':self.pk})

@@ -13,7 +13,7 @@ from django.views.generic import DetailView, ListView
 from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import CreateView
 
-from models import Arbre, Propietari, Hort, Arbre_Hort
+from models import Arbre, Propietari, Hort
 from forms import HortForm, ArbreForm
 from django.shortcuts import render_to_response
 from django.template import RequestContext

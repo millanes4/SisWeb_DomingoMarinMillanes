@@ -82,7 +82,7 @@ class ArbreCreate(CreateView):
 
 class ArbreDelete(DeleteView):
     model = Arbre
-    success_url = '/myhorts/'
+    success_url = '/horts'
 
 
 def submit(request):

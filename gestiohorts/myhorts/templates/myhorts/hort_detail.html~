@@ -30,7 +30,7 @@
 <ul>
     {% for arbre in hort.arbre.all %}
         <li><a href="{% url 'myhorts:arbre_edit' hort.id arbre.id %}">{{ arbre.varietat }}</a></li>
-        <form action="{% url 'myhorts:arbre_delete' hort.id arbre.id %}delete">
+        <form action="{% url 'myhorts:arbre_delete' arbre.id %}delete">
 		    <p><input type="submit" value="Delete Arbre" /></p>
 		</form>
     {% empty %}

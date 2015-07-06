@@ -39,8 +39,8 @@ urlpatterns = patterns('',
             form_class=HortForm,
             template_name='myhorts/form.html'),
     name='hort_edit'),
-    # Delete Arbre: /myhorts/horts/1/delete
-    url(r'^horts/(?P<pkr>\d+)/delete',
+    # Delete Hort: /myhorts/horts/1/delete
+    url(r'^horts/(?P<pk>\d+)/delete',
         HortDelete.as_view(model=Hort),
         name='hort_delete'),
     # Hort arbre details, ex: /myhorts/horts/1/arbres/1/
@@ -64,7 +64,7 @@ urlpatterns = patterns('',
         name='arbre_edit'),
             
     # Delete Arbre: /myhorts/horts/1/delete
-    url(r'^horts/(?P<pkr>\d+)/arbres/(?P<pk>\d+)/delete',
+    url(r'^horts/(?P<pkr>\d+)/arbres/(?P<pk>\d+)/',
         ArbreDelete.as_view(model=Arbre),
         name='arbre_delete'),
 

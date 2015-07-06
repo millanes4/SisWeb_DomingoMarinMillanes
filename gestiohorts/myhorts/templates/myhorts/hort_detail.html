@@ -9,6 +9,7 @@
     <span property="name">{{ hort.name }}</span>
     {% if user == hort.user %}
         (<a href="{% url 'myhorts:hort_edit' hort.id %}">edit</a>)
+
     {% endif %}
 </h1>
 

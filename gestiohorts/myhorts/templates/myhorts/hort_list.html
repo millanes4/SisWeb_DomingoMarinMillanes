@@ -14,7 +14,9 @@
         <form action="{% url 'myhorts:hort_detail' hort.id %}edit">
 		    <br><p><input type="submit" value="Editar Hort" /></p>
 		</form>
-		
+        <form action="{% url 'myhorts:hort_delete' hort.id %}delete">
+		    <p><input type="submit" value="Delete Hort" /></p>
+		</form>
 
     {% empty %}
         <li>Sorry, no horts registered yet.</li>

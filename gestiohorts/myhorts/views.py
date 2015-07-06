@@ -68,7 +68,9 @@ class HortCreate(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super(HortCreate, self).form_valid(form)
-
+class HortDelete(DeleteView):
+    model = Hort
+    succes_url = '/myhorts/'
 
 class ArbreCreate(CreateView):
     model = Arbre

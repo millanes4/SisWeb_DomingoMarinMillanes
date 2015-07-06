@@ -4,7 +4,7 @@ from django.views.generic import DetailView, ListView, UpdateView
 
 from models import Propietari, Hort, Arbre
 from forms import HortForm, ArbreForm
-from views import HortCreate, ArbreCreate, HortDetail, HortList, ArbreDelete
+from views import HortCreate, ArbreCreate, HortDetail, HortList,HortDelete, ArbreDelete
 
 urlpatterns = patterns('',
     # List latest 5 horts: /myhorts/
@@ -39,7 +39,10 @@ urlpatterns = patterns('',
             form_class=HortForm,
             template_name='myhorts/form.html'),
     name='hort_edit'),
-
+    # Delete Arbre: /myhorts/horts/1/delete
+    url(r'^horts/(?P<pkr>\d+)/delete',
+        HortDelete.as_view(model=Hort),
+        name='hort_delete'),
     # Hort arbre details, ex: /myhorts/horts/1/arbres/1/
     url(r'^horts/(?P<pkr>\d+)/arbres/(?P<pk>\d+)/$',
         DetailView.as_view(
